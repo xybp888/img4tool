@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		871209991E83D57F00240643 /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 871209981E83D57F00240643 /* libcrypto.1.0.0.dylib */; };
+		564158A421FD9EF2005C62E9 /* liblzfse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 564158A321FD9EF2005C62E9 /* liblzfse.a */; };
+		564158A621FD9EF9005C62E9 /* libplist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 564158A521FD9EF9005C62E9 /* libplist.a */; };
+		564158A821FD9F03005C62E9 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 564158A721FD9F03005C62E9 /* libcrypto.a */; };
+		56DA633D21E3357E00821A21 /* all.h in Sources */ = {isa = PBXBuildFile; fileRef = 56DA633521E3345C00821A21 /* all.h */; };
 		87192823200677F8005144BB /* lzssdec.c in Sources */ = {isa = PBXBuildFile; fileRef = 87192822200677F8005144BB /* lzssdec.c */; };
-		877A50DC1D2AB28A0058331C /* libplist.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 877A50DB1D2AB28A0058331C /* libplist.3.dylib */; };
 		8783074A1D1149E400866EF5 /* img4.c in Sources */ = {isa = PBXBuildFile; fileRef = 878307481D1149E400866EF5 /* img4.c */; };
 		87AD68BE1D8AD1E80094A99F /* img4tool.c in Sources */ = {isa = PBXBuildFile; fileRef = 87AD68BC1D8AD1E80094A99F /* img4tool.c */; };
 		87EC363220595E86007F7734 /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EC363120595E86007F7734 /* libcompression.tbd */; };
@@ -28,15 +30,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5641589C21FD9D6D005C62E9 /* all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = all.h; sourceTree = "<group>"; };
-		871209981E83D57F00240643 /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2k/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
+		564158A321FD9EF2005C62E9 /* liblzfse.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblzfse.a; path = ../../../../../usr/local/lib/liblzfse.a; sourceTree = "<group>"; };
+		564158A521FD9EF9005C62E9 /* libplist.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libplist.a; path = ../../../../../usr/local/lib/libplist.a; sourceTree = "<group>"; };
+		564158A721FD9F03005C62E9 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../../../../../usr/local/lib/libcrypto.a; sourceTree = "<group>"; };
+		56DA633521E3345C00821A21 /* all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = all.h; sourceTree = "<group>"; };
 		87192821200677F8005144BB /* lzssdec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lzssdec.h; sourceTree = "<group>"; };
 		87192822200677F8005144BB /* lzssdec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lzssdec.c; sourceTree = "<group>"; };
-		877A50DB1D2AB28A0058331C /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/lib/libplist.3.dylib; sourceTree = "<group>"; };
 		8783073E1D11499E00866EF5 /* img4tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = img4tool; sourceTree = BUILT_PRODUCTS_DIR; };
 		878307481D1149E400866EF5 /* img4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = img4.c; sourceTree = "<group>"; };
 		878307491D1149E400866EF5 /* img4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = img4.h; sourceTree = "<group>"; };
-		879ADF432059437A00B606EB /* liblzfse.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzfse.dylib; path = ../../../../usr/local/Cellar/lzfse/1.0/lib/liblzfse.dylib; sourceTree = "<group>"; };
 		87AD68BC1D8AD1E80094A99F /* img4tool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = img4tool.c; sourceTree = "<group>"; };
 		87AD68BD1D8AD1E80094A99F /* img4tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = img4tool.h; sourceTree = "<group>"; };
 		87EC363120595E86007F7734 /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
@@ -47,9 +49,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564158A421FD9EF2005C62E9 /* liblzfse.a in Frameworks */,
 				87EC363220595E86007F7734 /* libcompression.tbd in Frameworks */,
-				871209991E83D57F00240643 /* libcrypto.1.0.0.dylib in Frameworks */,
-				877A50DC1D2AB28A0058331C /* libplist.3.dylib in Frameworks */,
+				564158A821FD9F03005C62E9 /* libcrypto.a in Frameworks */,
+				564158A621FD9EF9005C62E9 /* libplist.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				87EC363120595E86007F7734 /* libcompression.tbd */,
-				879ADF432059437A00B606EB /* liblzfse.dylib */,
-				871209981E83D57F00240643 /* libcrypto.1.0.0.dylib */,
+				564158A321FD9EF2005C62E9 /* liblzfse.a */,
+				564158A521FD9EF9005C62E9 /* libplist.a */,
+				564158A721FD9F03005C62E9 /* libcrypto.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,7 +73,6 @@
 		878307351D11499E00866EF5 = {
 			isa = PBXGroup;
 			children = (
-				877A50DB1D2AB28A0058331C /* libplist.3.dylib */,
 				878307401D11499E00866EF5 /* img4tool */,
 				8783073F1D11499E00866EF5 /* Products */,
 				871209971E83D57E00240643 /* Frameworks */,
@@ -87,13 +90,13 @@
 		878307401D11499E00866EF5 /* img4tool */ = {
 			isa = PBXGroup;
 			children = (
-				5641589C21FD9D6D005C62E9 /* all.h */,
-				87192821200677F8005144BB /* lzssdec.h */,
-				87192822200677F8005144BB /* lzssdec.c */,
+				56DA633521E3345C00821A21 /* all.h */,
 				878307491D1149E400866EF5 /* img4.h */,
 				878307481D1149E400866EF5 /* img4.c */,
 				87AD68BD1D8AD1E80094A99F /* img4tool.h */,
 				87AD68BC1D8AD1E80094A99F /* img4tool.c */,
+				87192822200677F8005144BB /* lzssdec.c */,
+				87192821200677F8005144BB /* lzssdec.h */,
 			);
 			path = img4tool;
 			sourceTree = "<group>";
@@ -108,6 +111,7 @@
 				8783073A1D11499E00866EF5 /* Sources */,
 				8783073B1D11499E00866EF5 /* Frameworks */,
 				8783073C1D11499E00866EF5 /* CopyFiles */,
+				56DA633C21E334D200821A21 /* Version bump */,
 			);
 			buildRules = (
 			);
@@ -133,12 +137,9 @@
 				};
 			};
 			buildConfigurationList = 878307391D11499E00866EF5 /* Build configuration list for PBXProject "img4tool" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
 			mainGroup = 878307351D11499E00866EF5;
 			productRefGroup = 8783073F1D11499E00866EF5 /* Products */;
 			projectDirPath = "";
@@ -149,11 +150,33 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56DA633C21E334D200821A21 /* Version bump */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Version bump";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sed -i '.bak' \"s/.*IMG4TOOL_VERSION_COUNT.*/#define IMG4TOOL_VERSION_COUNT \\\"$(git rev-list --count HEAD)\\\"/\" ./img4tool/all.h 2>/dev/null || sed -i \"s/.*IMG4TOOL_VERSION_COUNT.*/#define IMG4TOOL_VERSION_COUNT \\\"$(git rev-list --count HEAD)\\\"/\" ./img4tool/all.h 2>/dev/null\nsed -i '.bak' \"s/.*IMG4TOOL_VERSION_SHA.*/#define IMG4TOOL_VERSION_SHA \\\"$(git rev-parse HEAD)\\\"/\" ./img4tool/all.h 2>/dev/null || sed -i \"s/.*IMG4TOOL_VERSION_SHA.*/#define IMG4TOOL_VERSION_SHA \\\"$(git rev-parse HEAD)\\\"/\" ./img4tool/all.h 2>/dev/null\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8783073A1D11499E00866EF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56DA633D21E3357E00821A21 /* all.h in Sources */,
 				8783074A1D1149E400866EF5 /* img4.c in Sources */,
 				87192823200677F8005144BB /* lzssdec.c in Sources */,
 				87AD68BE1D8AD1E80094A99F /* img4tool.c in Sources */,
@@ -199,9 +222,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/opt/local/include,
+				);
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/opt/openssl/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.tihmstar.img4tool;
+				PRODUCT_NAME = img4tool;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -236,8 +270,19 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/opt/local/include,
+				);
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/opt/openssl/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = net.tihmstar.img4tool;
+				PRODUCT_NAME = img4tool;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -253,8 +298,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/opt/openssl/lib,
-					/usr/local/Cellar/openssl/1.0.2k/lib,
-					/usr/local/Cellar/lzfse/1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = /usr/local/opt/openssl/include;
@@ -272,8 +315,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/opt/openssl/lib,
-					/usr/local/Cellar/openssl/1.0.2k/lib,
-					/usr/local/Cellar/lzfse/1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = /usr/local/opt/openssl/include;
