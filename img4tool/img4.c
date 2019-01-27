@@ -859,6 +859,8 @@ int hasBuildidentityElementWithHash(plist_t identity, char *hash, uint64_t hashS
         skipelem("SE,MigrationOS")
         skipelem("SE,OS")
         skipelem("SE,UpdatePayload")
+        skipelem("eUICC,Gold")
+        skipelem("eUICC,Main")
         
         plist_t digest = plist_dict_get_item(node, "Digest");
         if (!digest || plist_get_node_type(digest) != PLIST_DATA)
@@ -912,6 +914,8 @@ plist_t findAnyBuildidentityForFilehash(plist_t identities, char *hash, uint64_t
             skipelem("SE,MigrationOS")
             skipelem("SE,OS")
             skipelem("SE,UpdatePayload")
+            skipelem("eUICC,Gold")
+            skipelem("eUICC,Main")
             
             plist_t digest = plist_dict_get_item(node, "Digest");
             if (!digest || plist_get_node_type(digest) != PLIST_DATA)
@@ -1015,6 +1019,8 @@ int im4m_buildidentity_check_cb(char elemNameStr[4], char *dgstData, size_t dgst
     skipelem("SE,MigrationOS");
     skipelem("SE,OS");
     skipelem("SE,UpdatePayload");
+    skipelem("eUICC,Gold");
+    skipelem("eUICC,Main");
     
     if (state->rt){
         if (!hasBuildidentityElementWithHash(state->rt, dgstData, dgstDataLen)){
