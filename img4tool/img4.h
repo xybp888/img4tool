@@ -84,7 +84,6 @@ typedef struct{
     byte more : 1;
 }t_asn1PrivateTag;
 
-
 #ifndef __cplusplus
 typedef enum{
     false,

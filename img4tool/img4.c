@@ -66,7 +66,6 @@ t_asn1ElemLen asn1Len(const char buf[4]){
 }
 
 char *ans1GetString(char *buf, char **outString, size_t *strlen){
-    
     t_asn1Tag *tag = (t_asn1Tag *)buf;
     
     if (!(tag->tagNumber | kASN1TagIA5String)) {
@@ -90,7 +89,7 @@ int asn1ElementAtIndexWithCounter(const char *buf, int index, t_asn1Tag **tagret
     
     buf +=len.sizeBytes;
     
-#warning TODO add lenght and range checks
+/* Warning: TO-DO add lenght and range checks */
     while (len.dataLen) {
         if (ret == index && tagret){
             *tagret = (t_asn1Tag*)buf;
@@ -154,12 +153,10 @@ size_t asn1GetPrivateTagnum(t_asn1Tag *tag, size_t *sizebytes){
     t_asn1ElemLen taglen = asn1Len((char*)++tag);
     taglen.sizeBytes-=1;
     if (taglen.sizeBytes != 4){
-        /* 
-         WARNING: seems like apple's private tag is always 4 bytes long
+     /*  WARNING: seems like apple's private tag is always 4 bytes long
          i first assumed 0x84 can be parsed as long size with 4 bytes, 
          but 0x86 also seems to be 4 bytes size even if one would assume it means 6 bytes size.
-         This opens the question what the 4 or 6 nibble means.
-        */
+         This opens the question what the 4 or 6 nibble means. */
         taglen.sizeBytes = 4;
     }
     size_t tagname =0;
@@ -361,7 +358,6 @@ int extractFileFromIM4P(char *buf, const char *dstFilename){
         error("not enough elements in SEQUENCE %d\n",elems);
         return -2;
     }
-
 
     char *dataTag = asn1ElementAtIndex(buf, 3)+1;
     t_asn1ElemLen dlen = asn1Len(dataTag);
@@ -574,7 +570,6 @@ int replaceNameInIM4P(char *buf, const char *newName){
     return 0;
 }
 
-
 char *getValueForTagInSet(char *set, uint32_t tag){
 #define reterror(a) return (error(a),NULL)
     
@@ -636,7 +631,6 @@ error:
     return;
 #undef reterror
 }
-
 
 void printIM4R(char *buf){
 #define reterror(a ...){error(a);goto error;}
@@ -776,7 +770,6 @@ void asn1PrintRecKeyVal(char *buf){
         return;
     }
     
-    
     //must be a SET
     printf("------------------------------\n");
     for (int i = 0; i<asn1ElementsInObject(buf); i++) {
@@ -821,16 +814,14 @@ void printMANB(char *buf, bool printAll){
         }
     }
     
-    
 error:
     return;
 #undef reterror
 }
 
-
-char *getSHA1ofSqeuence(char * buf){
+char *getSHA1ofSequence(char * buf){
     if (((t_asn1Tag*)buf)->tagNumber != kASN1TagSEQUENCE){
-        error("tag not seuqnece");
+        error("tag not sequence");
         return 0;
     }
     t_asn1ElemLen bLen = asn1Len(buf+1);
@@ -844,7 +835,7 @@ char *getSHA1ofSqeuence(char * buf){
 
 int hasBuildidentityElementWithHash(plist_t identity, char *hash, uint64_t hashSize){
 #define reterror(a ...){rt=0;error(a);goto error;}
-#define skipelem(e) if (strcmp(key, e) == 0) {/*warning("skipping element=%s\n",key);*/goto skip;} //seems to work as it is, we don't need to see that warning anymore
+#define skipelem(e) if (strcmp(key, e) == 0) { /* warning("skipping element=%s\n",key); */ goto skip;} //seems to work as it is, we don't need to see that warning anymore
 
     int rt = 0;
     plist_dict_iter dictIterator = NULL;
@@ -894,7 +885,7 @@ error:
 }
 
 plist_t findAnyBuildidentityForFilehash(plist_t identities, char *hash, uint64_t hashSize){
-#define skipelem(e) if (strcmp(key, e) == 0) {/*warning("skipping element=%s\n",key);*/goto skip;} //seems to work as it is, we don't need to see that warning anymore
+#define skipelem(e) if (strcmp(key, e) == 0) { /* warning("skipping element=%s\n",key); */ goto skip;} //seems to work as it is, we don't need to see that warning anymore
 #define reterror(a ...){rt=NULL;error(a);goto error;}
     plist_t rt = NULL;
     plist_dict_iter dictIterator = NULL;
@@ -955,6 +946,7 @@ int doForDGSTinIM4M(const char *im4m, void *state, int (*loop_cb)(char elemNameS
     char *im4mset = (char *)asn1ElementAtIndex(im4m, 2);
     if (!im4mset)
         reterror(-2,"can't find im4mset\n");
+    
     char *manbSeq = getValueForTagInSet(im4mset, *(uint32_t*)"BNAM");
     if (!manbSeq)
         reterror(-3,"can't find manbSeq\n");
@@ -984,14 +976,12 @@ int doForDGSTinIM4M(const char *im4m, void *state, int (*loop_cb)(char elemNameS
         if (!dgstSeq)
             reterror(-6, "can't find dgstSeq. i=%d\n",i);
         
-        
         char *dgst = asn1ElementAtIndex(dgstSeq, 1);
         if (!dgst || asn1Tag(dgst)->tagNumber != kASN1TagOCTET)
             reterror(-7, "can't find DGST. i=%d\n",i);
         
         t_asn1ElemLen lenDGST = asn1Len((char*)dgst+1);
         char *dgstData = (char*)dgst+lenDGST.sizeBytes+1;
-        
         
         if ((err = loop_cb(elemNameStr, dgstData, lenDGST.dataLen, state))){
             if (err > 0){ //restart loop if err > 0
@@ -1007,7 +997,6 @@ error:
     return err;
 #undef reterror
 }
-
 
 int im4m_buildidentity_check_cb(char elemNameStr[4], char *dgstData, size_t dgstDataLen, struct {plist_t rt; plist_t identities;} *state){
 #define skipelem(e) if (strncmp(e, elemNameStr,4) == 0) return 0
@@ -1026,7 +1015,6 @@ int im4m_buildidentity_check_cb(char elemNameStr[4], char *dgstData, size_t dgst
     }else{
         if (!(state->rt = findAnyBuildidentityForFilehash(state->identities, dgstData, dgstDataLen)))
             return (error("can't find any identity which matches all hashes inside IM4M\n"),-1);
-        
     }
     
 #undef skipelem
@@ -1035,7 +1023,7 @@ int im4m_buildidentity_check_cb(char elemNameStr[4], char *dgstData, size_t dgst
 
 plist_t getBuildIdentityForIM4M(const char *buf, const plist_t buildmanifest){
 #define reterror(a ...){state.rt=NULL;error(a);goto error;}
-#define skipelem(e) if (strncmp(elemNameStr, e, 4) == 0) {/*warning("skipping element=%s\n",e);*/continue;} //seems to work as it is, we don't need to see that warning anymore
+#define skipelem(e) if (strncmp(elemNameStr, e, 4) == 0) { /*warning("skipping element=%s\n",e); */ continue;} //seems to work as it is, we don't need to see that warning anymore
 
     plist_t manifest = plist_copy(buildmanifest);
     
@@ -1045,7 +1033,6 @@ plist_t getBuildIdentityForIM4M(const char *buf, const plist_t buildmanifest){
     state.identities = plist_dict_get_item(manifest, "BuildIdentities");
     if (!state.identities)
         reterror("can't find BuildIdentities\n");
-    
     
     doForDGSTinIM4M(buf, (void*)&state, (int (*)(char[4], char *, size_t, void *))im4m_buildidentity_check_cb);
     
@@ -1154,7 +1141,7 @@ int verifyIM4MSignature(const char *buf){
     int elems = 0;
     retassure(-2, (elems = asn1ElementsInObject(certs)) >=1); //iPhone7 has 1 cert, while pre-iPhone7 have 2 certs
     
-//    char *bootAuthority = asn1ElementAtIndex(certs, 0); //does not exist on iPhone7
+//  char *bootAuthority = asn1ElementAtIndex(certs, 0); //does not exist on iPhone7
     char *tssAuthority = asn1ElementAtIndex(certs, elems-1); //is always last item
     
     err = verify_signature(im4m, sig, tssAuthority, elems < 2); //use SHA384 if elems is 2 otherwise use SHA1
@@ -1229,7 +1216,7 @@ int verifyIMG4(char *buf, plist_t buildmanifest){
     if (sequenceHasName(buf, "IMG4")){
         //verify IMG4
         char *im4p = getIM4PFromIMG4(buf);
-        im4pSHA = getSHA1ofSqeuence(im4p);
+        im4pSHA = getSHA1ofSequence(im4p);
 
         if (!im4p) goto error;
         
@@ -1251,8 +1238,7 @@ int verifyIMG4(char *buf, plist_t buildmanifest){
     }else
         printf("[OK] IM4M signature is verified by TssAuthority\n");
     
-#warning TODO verify certificate chain
-    
+/* Warning: TO-DO verify certificate chain */
     if (buildmanifest) {
         plist_t identity = getBuildIdentityForIM4M(buf, buildmanifest);
         if (identity){
@@ -1266,14 +1252,8 @@ int verifyIMG4(char *buf, plist_t buildmanifest){
         warning("No BuildManifest specified, can't verify restore type of APTicket\n");
     }
     
-
 error:
     safeFree(im4pSHA);
     return err;
 #undef reterror
 }
-
-
-
-
-
