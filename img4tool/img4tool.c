@@ -13,7 +13,8 @@
 #include <plist/plist.h>
 #include "img4.h"
 #include "img4tool.h"
-#include "all_img4tool.h"
+#include "all.h"
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -25,7 +26,6 @@
 #else
 #   include <openssl/sha.h>
 #endif // __APPLE__
-
 
 #define safeFree(buf) if (buf) free(buf), buf = NULL
 #define swapchar(a,b) ((a) ^= (b),(b) ^= (a),(a) ^= (b)) //swaps a and b, unless they are the same variable
@@ -143,7 +143,6 @@ char *parseNonce(const char *nonce,size_t noncelen){
 #define FLAG_VERIFY     1 << 4
 #define FLAG_CONVERT    1 << 5
 
-
 #ifndef IMG4TOOL_NOMAIN
 #define MAX_PRINT_LEN 64*1024
 void debug_plist(plist_t plist) {
@@ -230,7 +229,7 @@ static int parseHex(const char *nonce, size_t *parsedLen, char *ret, size_t *ret
 }
 
 int main(int argc, const char * argv[]) {
-    printf("Version: "IMG4TOOL_VERSION_COMMIT_SHA" - "IMG4TOOL_VERSION_COMMIT_COUNT"\n");
+    printf("Version: "IMG4TOOL_VERSION_SHA" - "IMG4TOOL_VERSION_COUNT"\n");
     int error = 0;
     int optindex = 0;
     int opt = 0;
@@ -248,7 +247,7 @@ int main(int argc, const char * argv[]) {
     
     if (sizeof(uint64_t) != 8){
         printf("[FATAL] sizeof(uint64_t) != 8 (size is %lu byte). This program might function incorrectly\n",sizeof(uint64_t));
-//        return 64;
+//      return 64;
     }
     
     char *buf = NULL;
